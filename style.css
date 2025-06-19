@@ -1,34 +1,34 @@
 * {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*header*/
 
 .header {
-    background-color: #FD0086;
-    color: white;
+  background-color: #FD0086;
+  color: white;
 }
 
 /*navbar*/
 
 .navbar {
-    display: flex;
-    align-items: center;
-    width: 100vw;
-    justify-content: space-evenly ;
-    
+  display: flex;
+  align-items: center;
+  width: 100vw;
+  justify-content: space-evenly;
+
 }
 
 .navbar-list {
-    display: flex;
-    list-style: none;
-    padding: 0.5rem 1rem;
-    color: #F288C0;
-    justify-content: space-around;
-    width: 50%;
-    gap:1rem;
-    text-align: center;
+  display: flex;
+  list-style: none;
+  padding: 0.5rem 1rem;
+  color: #F288C0;
+  justify-content: space-around;
+  width: 50%;
+  gap: 1rem;
+  text-align: center;
 
 
 }
@@ -39,100 +39,126 @@
 }
 
 .search {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    width: 40%;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  width: 40%;
 
-  }
-  
-  .search__input {
-    font-family: inherit;
-    font-size: inherit;
-    border: 1px solid #767676;
-    color: #767676;
-    padding: 5px 10px;
-    border-radius: 20px;
-    border-color: pink;
-    margin-right: -1.5rem;
-    height: 30px;
-    width: 30rem;
-  }
-  
-  .search__input::-webkit-input-placeholder {
-    font-weight: 400;
-    color:#FD0086;
-    font-size: 14px;
-  }
-  
-  .search__button {
-    border: none;
-    background-color: #fff;
-    margin-top: 0.1em;
-    color: pink;
-  }
-  
-  .search__button:hover {
-    cursor: pointer;
-  }
-  
-  .search input:focus {
-    outline: none;
-  }
+}
 
-  /*Banner-slider*/
+.search__input {
+  font-family: inherit;
+  font-size: inherit;
+  border: 1px solid #767676;
+  color: #767676;
+  padding: 5px 10px;
+  border-radius: 20px;
+  border-color: pink;
+  margin-right: -1.5rem;
+  height: 30px;
+  width: 30rem;
+}
 
-  .slider-container {
-    width: 100%;
-    box-sizing: border-box;
-  }
+.search__input::-webkit-input-placeholder {
+  font-weight: 400;
+  color: #FD0086;
+  font-size: 14px;
+}
 
-  .slider-wrapper {
-    position: relative;
-    width: 100%;
-    height: auto;
-   
-  }
+.search__button {
+  border: none;
+  background-color: #fff;
+  margin-top: 0.1em;
+  color: pink;
+}
 
-  .slider {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    box-shadow: 0 1.5rem 3rem -0.75rem hsla (0, 0%, 0% 0.25);
-    border-radius: 0.5rem;
-  }
+.search__button:hover {
+  cursor: pointer;
+}
 
-  .slider::-webkit-scrollbar {
-    display: none;
-  }
+.search input:focus {
+  outline: none;
+}
 
-  .slider img {
-    flex: 1 0 100%;
-    scroll-snap-align: start;
-    object-fit: cover;
-  }
+/*Banner-slider*/
 
-  .slider-nav {
-    display: flex;
-    align-self: center;
-    column-gap: 1rem;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1;
-    gap: 1vh;
-    margin-top: 2vh;
-  }
-  .slider-nav a {
-    width: 0.5rem;
-    height: 0.5rem;
-    border-radius: 50%;
-    background-color: #b33d95;
-    opacity: 0.75;
-    transition: opacity ease 250ms;
-  }
+.slider-container {
+  width: 100%;
+  box-sizing: border-box;
+}
 
-  .slider-nav a:hover {
-    opacity: 5;
-  }
+.slider-wrapper {
+  position: relative;
+  width: 100%;
+  height: auto;
+
+}
+
+.slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  box-shadow: 0 1.5rem 3rem -0.75rem hsla (0, 0%, 0% 0.25);
+  border-radius: 0.5rem;
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider img {
+  flex: 1 0 100%;
+  scroll-snap-align: start;
+  object-fit: contain;
+
+}
+
+.slider-nav {
+  display: flex;
+  align-self: center;
+  column-gap: 1rem;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  gap: 1vh;
+  margin-top: 2vh;
+  justify-self: center;
+  width: 100%;
+  justify-content: center;
+  margin: 1vh;
+}
+
+.slider-nav a {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: #b33d95;
+  opacity: 0.75;
+  transition: opacity ease 250ms;
+}
+
+.slider-nav a:hover {
+  opacity: 5;
+}
+
+.seccion-inferior {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  justify-content: center;
+}
+
+.seccion {
+  width: 10vw;
+  height: 10vh;
+  text-align: center;
+
+}
+
+.barra {
+  width: 0.3vw;
+  background-color: #FD0086;
+  border-radius: 10px;
+}
