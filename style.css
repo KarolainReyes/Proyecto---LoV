@@ -1,0 +1,80 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*header*/
+
+.header {
+    background-color: #FD0086;
+    color: white;
+}
+
+/*navbar*/
+
+.navbar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-evenly ;
+    padding: 1rem;
+    
+}
+
+.navbar-list {
+    display: flex;
+    list-style: none;
+    padding: 0.5rem 1rem;
+    color: #F288C0;
+    justify-content: space-around;
+    width: 50%;
+    gap:1rem;
+    text-align: center;
+
+
+}
+
+/* From Uiverse.io by xetrov47 */ 
+
+.search {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    width: 40%;
+
+  }
+  
+  .search__input {
+    font-family: inherit;
+    font-size: inherit;
+    border: 1px solid #767676;
+    color: #767676;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border-color: pink;
+    margin-right: -1.5rem;
+    height: 30px;
+    width: 30rem;
+  }
+  
+  .search__input::-webkit-input-placeholder {
+    font-weight: 400;
+    color:#FD0086;
+    font-size: 14px;
+  }
+  
+  .search__button {
+    border: none;
+    background-color: #fff;
+    margin-top: 0.1em;
+    color: pink;
+  }
+  
+  .search__button:hover {
+    cursor: pointer;
+  }
+  
+  .search input:focus {
+    outline: none;
+  }
+  
