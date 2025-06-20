@@ -183,3 +183,103 @@
 .seccion p {
   color: #F288C0;
 }
+
+
+
+/*PAGINA CATEGORIAS*/
+
+.categorias{
+display: flex;  
+background-color: #F288C0;
+}
+
+/* From Uiverse.io by narmesh_sah */ 
+.card {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
+}
+
+.stones-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 2rem;
+}
+
+.stone-wrapper {
+  position: relative;
+  width: 120px;
+  height: 120px;
+}
+
+.stone {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.stone:hover {
+  transform: scale(1.2);
+}
+
+.stone-name {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  bottom: -40px;
+  left: 0;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 10px currentColor;
+}
+
+.stone:hover + .stone-name {
+  opacity: 1;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.stone-wrapper {
+  animation: float 4s ease-in-out infinite;
+}
+
+.stone-wrapper:nth-child(2) {
+  animation-delay: -0.5s;
+}
+.stone-wrapper:nth-child(3) {
+  animation-delay: -1s;
+}
+.stone-wrapper:nth-child(4) {
+  animation-delay: -1.5s;
+}
+.stone-wrapper:nth-child(5) {
+  animation-delay: -2s;
+}
+.stone-wrapper:nth-child(6) {
+  animation-delay: -2.5s;
+}
