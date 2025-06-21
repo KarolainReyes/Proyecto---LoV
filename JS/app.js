@@ -29,7 +29,7 @@ function selectData (prod) { //llama a la funcion que selleciona los datos del e
     }
 
     productsArray = [...productsArray, productObj] //copia la lista de productsArray y obtiene productObj
-    
+    showAlert('El producto fue agregado exitosamente', 'success');
     productsHtml();
 
 }
@@ -85,3 +85,14 @@ function cleanHtml() {
     contentProducts.innerHTML ='';
 }
 
+//mensaje de alert
+
+function showAlert(message, type) {
+    const div = document.createElement('div');
+    div.classList.add('alert', type);
+    div.textContent = message;
+
+    document.body.appendChild(div); //introducir alert al body
+
+    setTimeout(()=>div.remove(),5000); //eliminar alert
+}
