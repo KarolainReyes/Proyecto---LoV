@@ -88,6 +88,8 @@ function cleanHtml() {
 //mensaje de alert
 
 function showAlert(message, type) {
+    if (nonRepeatAlert) nonRepeatAlert.remove();
+    const nonRepeatAlert = document.querySelector ('alert');//selecciona el div del alert y con la funcion nonReapeatAlert, no permite que se repita
     const div = document.createElement('div');
     div.classList.add('alert', type);
     div.textContent = message;
