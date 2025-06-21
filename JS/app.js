@@ -1,4 +1,5 @@
 const listaProductos = document.querySelector('#listaProductos');
+const contentProducts = document.querySelector('#contentProducts')
 
 let productsArray = [];
 
@@ -31,5 +32,56 @@ function selectData (prod) { //llama a la funcion que selleciona los datos del e
     
     productsHtml();
 
+}
+
+function productsHtml(){
+    cleanHtml();
+    productsArray.forEach(prod=>{
+        const {img, title, price, quantity, id} = prod; //destructuracion del objeto
+
+        const tr = document.createElement('tr'); //crea el html
+
+        const tdImg = document.createElement('td');
+        const prodImg = document.createElement ('img');
+        prodImg.src = img;
+        prodImg.alt = 'image product'
+        tdImg.appendChild(prodImg);
+
+        const tdTitle = document.createElement('td');
+        const prodTitle = document.createElement('p');
+        prodTitle.textContent= title;
+        tdTitle.appendChild(prodTitle);     
+
+        const tdPrice = document.createElement('td');
+        const prodPrice = document.createElement('p');
+        prodPrice.textContent= `$${price.toFixed(2)}`;
+        tdPrice.appendChild(prodPrice);
+
+        const tdQuantity = document.createElement('td');
+        const prodQuantity = document.createElement('input');
+        prodQuantity.type = 'number';
+        prodQuantity.min ='1';
+        prodQuantity.value = quantity;
+        prodQuantity.dataset.id = id;
+        tdQuantity.appendChild(prodQuantity);
+
+        const tdDelete = document.createElement('td');
+        const prodDelete = document.createElement('button');
+        prodDelete.type = 'button';
+        prodDelete.textContent= 'X';
+        tdDelete.appendChild(prodDelete)
+
+        
+
+        tr.append(tdImg,tdTitle, tdPrice, tdQuantity, tdDelete);
+
+        contentProducts.appendChild(tr);
+    });
+}
+
+//limpiar el html despues de agregar los productos
+
+function cleanHtml() {
+    contentProducts.innerHTML ='';
 }
 
