@@ -12,6 +12,18 @@ function eventListeners () { //funcion que llama los eventos
     listaProductos.addEventListener('click', getDataElements);
 }
 
+function updateCaertCount() { //contador, suma la cantidad de productos en el carrito
+    const cartCount = document.querySelector('#cartCount')
+    cartCount.textContent = productsArray.length;
+}
+
+function updateTotal () {
+    const total = document.querySelector ('#total')
+    let totalProducto = productsArray.reduce((total, prod)=>total+prod.price * prod.quantity, 0);
+    total.textContent = `$${totalProducto.toFixed(2)}`;
+}
+
+
 function getDataElements (e) {//funcion que selecciona elementos del DOM (La e llama a el evento)
    if (e.target.classList.contains('boton-tarjeta')) {
     const elementHTML = e.target.parentElement; //con parentElement podemos seleccionar los elementos del DOM dando clic al boton "añadir al carrito"
@@ -38,6 +50,8 @@ function selectData (prod) { //llama a la funcion que selleciona los datos del e
     productsArray = [...productsArray, productObj] //copia la lista de productsArray y obtiene productObj
     showAlert('El producto fue agregado exitosamente', 'success');
     productsHtml();
+    updateCaertCount(); //contador
+    updateTotal();
 
 }
 
@@ -93,6 +107,8 @@ function destroyProduct(idProd)
     productsArray = productsArray.filter (prod => prod.id !== idProd);
     showAlert('El producto fue eliminado con éxito', 'success');
     productsHtml();
+    updateCaertCount();
+    updateTotal();
 }
 
 //limpiar el html despues de agregar los productos
