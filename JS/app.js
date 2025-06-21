@@ -27,6 +27,13 @@ function selectData (prod) { //llama a la funcion que selleciona los datos del e
         id: parseInt(prod.querySelector('button[type="button"]').dataset.id, 10), //la base 10 asegura de que siempre sea un entero
         quantity: 1
     }
+    //validar que un producto no se repita dentro del carrito
+    const exists = productsArray.some(prod => prod.id === productObj.id) //.someeste metodo se utiliza en arrays para verificar si almenos un elemento cumple con una condicion, retorna true o false
+
+    if (exists) {
+        showAlert('El producto ya existe en el carrito', 'error')
+        return;
+    }
 
     productsArray = [...productsArray, productObj] //copia la lista de productsArray y obtiene productObj
     showAlert('El producto fue agregado exitosamente', 'success');
@@ -69,6 +76,7 @@ function productsHtml(){
         const prodDelete = document.createElement('button');
         prodDelete.type = 'button';
         prodDelete.textContent= 'X';
+        prodDelete.onclick = () => destroyProduct(id);
         tdDelete.appendChild(prodDelete)
 
         
@@ -77,6 +85,14 @@ function productsHtml(){
 
         contentProducts.appendChild(tr);
     });
+}
+
+//FUNCION PARA ELIMINAR PRODUCTOS
+function destroyProduct(idProd)
+{
+    productsArray = productsArray.filter (prod => prod.id !== idProd);
+    showAlert('El producto fue eliminado con éxito', 'success');
+    productsHtml();
 }
 
 //limpiar el html despues de agregar los productos
@@ -88,8 +104,8 @@ function cleanHtml() {
 //mensaje de alert
 
 function showAlert(message, type) {
-    if (nonRepeatAlert) nonRepeatAlert.remove();
     const nonRepeatAlert = document.querySelector ('alert');//selecciona el div del alert y con la funcion nonReapeatAlert, no permite que se repita
+    if (nonRepeatAlert) nonRepeatAlert.remove();
     const div = document.createElement('div');
     div.classList.add('alert', type);
     div.textContent = message;
