@@ -176,8 +176,28 @@ fetch(url, metodo)
 setTimeout(() => {
     console.log(bolsa);
 
-}, 3000);
+}, 400);
 
+
+function tarjetaProductosTotal() {
+    const contenedorProductos = document.getElementById("listaProductos");
+    contenedorProductos.innerHTML = "";
+    bolsa.forEach(producto => {
+            let tarjetita = document.createElement("div");
+            tarjetita.classList.add("contenedor-tarjeta");
+            tarjetita.innerHTML = `
+            <h2 class="titulo-tarjeta">${producto.title}</h2>
+          <img class="imagen-tarjeta" src=${producto.image}>
+          <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
+          <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0,400)}...</p>
+          <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">añadir al carrito</button>
+            `
+            contenedorProductos.appendChild(tarjetita);
+        }
+    )
+}
+
+setTimeout(()=>{tarjetaProductosTotal()},500)
 
 function tarjetaProductos(categoria) {
     const contenedorProductos = document.getElementById("listaProductos");
@@ -219,3 +239,4 @@ categoriaContenedor.addEventListener("click", () => {
             break;
     }
 })
+
