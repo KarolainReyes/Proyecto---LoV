@@ -1,5 +1,6 @@
 const listaProductos = document.querySelector('#listaProductos');
-const contentProducts = document.querySelector('#contentProducts')
+const contentProducts = document.querySelector('#contentProducts');
+const emptyCart = document.querySelector('#emptyCart');
 
 let productsArray = [];
 
@@ -10,9 +11,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function eventListeners() { //funcion que llama los eventos
     listaProductos.addEventListener('click', getDataElements);
+    emptyCart.addEventListener ('click', function(){
+        productsArray = [];
+        productsHtml();
+        updateTotal();
+        updateCartCount();
+    })
 }
 
-function updateCaertCount() { //contador, suma la cantidad de productos en el carrito
+function updateCartCount() { //contador, suma la cantidad de productos en el carrito
     const cartCount = document.querySelector('#cartCount')
     cartCount.textContent = productsArray.length;
 }
@@ -50,7 +57,7 @@ function selectData(prod) { //llama a la funcion que selleciona los datos del el
     productsArray = [...productsArray, productObj] //copia la lista de productsArray y obtiene productObj
     showAlert('El producto fue agregado exitosamente', 'success');
     productsHtml();
-    updateCaertCount(); //contador
+    updateCartCount(); //contador
     updateTotal();
 
 }
@@ -100,8 +107,17 @@ function productsHtml() {
 
         contentProducts.appendChild(tr);
     });
+
+    saveLocalStorage();
+}
+//FUNCION PARA LOCAL STORAGE
+
+function saveLocalStorage() {
+    localStorage.setItem('products', JSON.stringify(productsArray));
 }
 
+
+//FUNCION PARA ACTUALIZAR LA CANTIDAD
 function updateQuantity(e) {
     const newQuantity = parseInt(e.target.value, 10);
     const idProd = parseInt(e.target.dataset.id, 10);
@@ -115,12 +131,13 @@ function updateQuantity(e) {
     updateTotal();
 }
 
+
 //FUNCION PARA ELIMINAR PRODUCTOS
 function destroyProduct(idProd) {
     productsArray = productsArray.filter(prod => prod.id !== idProd);
     showAlert('El producto fue eliminado con éxito', 'success');
     productsHtml();
-    updateCaertCount();
+    updateCartCount();
     updateTotal();
 }
 

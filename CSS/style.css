@@ -10,6 +10,9 @@
 .header {
   background-color: #FD0086;
   color: white;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
 }
 
 /*Primera vista*/
@@ -33,6 +36,10 @@
   width: 100%;
   justify-content: space-evenly;
   box-sizing: border-box;
+  background-color: #ffffff;
+  z-index: 1000;
+  margin-top:37px;
+  position: fixed;
 }
 
 .navbar-list {
@@ -107,6 +114,7 @@
   width: 100%;
   animation: slideAnimation 12s infinite;
   height: 100%;
+  margin-top: 15vh;
 }
 
 
@@ -156,7 +164,7 @@
   width: 100%;
   justify-content: space-evenly;
   gap: 5vw;
-  margin: 5% 0 0;
+  margin-bottom: 5vh;
   padding: 2vh;
 
   
