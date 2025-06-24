@@ -1,6 +1,16 @@
+/* al inicio de tu archivo CSS */
+@import url('https://fonts.googleapis.com/css2?family=Lexend+Giga:wght@100..900&display=swap');
 
 
 :root {
-    --rose: #FD0086;
+    --persian-pink: #F288C0;
+    --white:        #ffffff;
+    --rose:         #FD0086;
+    --pink:         #FFC0CB;
+    --gray:         #767676;
+    --red-violet:   #c62884;
+    --ligth-green:  #8FE691;
+
+
     
 }
