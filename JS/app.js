@@ -16,8 +16,17 @@ function eventListeners() { //funcion que llama los eventos
         productsHtml();
         updateTotal();
         updateCartCount();
-        tarjetaProductosTotal()
-    })
+        tarjetaProductosTotal();
+    });
+
+    const localProduct = localStorage.getItem('products');
+    if(localProduct) {
+        productsArray = JSON.parse(localProduct);
+        productsHtml();
+        updateCartCount();
+    } else {
+        productsArray = [];
+    }
 }
 
 function updateCartCount() { //contador, suma la cantidad de productos en el carrito
@@ -130,6 +139,7 @@ function updateQuantity(e) {
 
     productsHtml();
     updateTotal();
+    saveLocalStorage();
 }
 
 
@@ -140,6 +150,7 @@ function destroyProduct(idProd) {
     productsHtml();
     updateCartCount();
     updateTotal();
+    saveLocalStorage();
 }
 
 //limpiar el html despues de agregar los productos
