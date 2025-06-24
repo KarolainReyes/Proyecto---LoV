@@ -75,7 +75,7 @@ function productsHtml(){
 
         const tdPrice = document.createElement('td');
         const prodPrice = document.createElement('p');
-        prodPrice.textContent= `$${price.toFixed(2)}`;
+        prodPrice.textContent= `$${price.toFixed(2) * quantity}`;
         tdPrice.appendChild(prodPrice);
 
         const tdQuantity = document.createElement('td');
@@ -84,6 +84,7 @@ function productsHtml(){
         prodQuantity.min ='1';
         prodQuantity.value = quantity;
         prodQuantity.dataset.id = id;
+        prodQuantity.oninput = updateQuantity;
         tdQuantity.appendChild(prodQuantity);
 
         const tdDelete = document.createElement('td');
@@ -99,6 +100,19 @@ function productsHtml(){
 
         contentProducts.appendChild(tr);
     });
+}
+
+function updateQuantity (e) {
+    const newQuantity = parseInt(e.target.value, 10);
+    const idProd = parseInt(e.target.dataset.id, 10);
+
+    const product = productsArray.find(prod => prod.id === idProd); //array metho para buscar el primer elemento en un arrau, que cumple con una condicion especifica
+    if (product && newQuantity > 0) { //actualiza la cnatidad
+        product.quantity = newQuantity;
+    }
+
+    productsHtml();
+    updateTotal();
 }
 
 //FUNCION PARA ELIMINAR PRODUCTOS
@@ -135,15 +149,15 @@ function showAlert(message, type) {
 
 //FUNCION PARA CONSUMO DE API
 
-const url = "https://fakestoreapi.com/products"; 
-let bolsa = [];
-const metodo = {method: "GET"};
-fetch (url, metodo)
-.then(data=> {return data.json()})
-.then(data1=>{bolsa = data1;})
-.catch(error=>console.log(error))
+//const url = "https://fakestoreapi.com/products"; 
+//let bolsa = [];
+//const metodo = {method: "GET"};
+//fetch (url, metodo)
+//.then(data=> {return data.json()})
+//.then(data1=>{bolsa = data1;})
+//.catch(error=>console.log(error))
 
-setTimeout(() => {
-    console.log(bolsa);
+//setTimeout(() => {
+//    console.log(bolsa);
     
-}, 3000);
+//}, 3000);
