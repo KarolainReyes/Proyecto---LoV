@@ -16,6 +16,7 @@ function eventListeners() { //funcion que llama los eventos
         productsHtml();
         updateTotal();
         updateCartCount();
+        tarjetaProductosTotal()
     })
 }
 
