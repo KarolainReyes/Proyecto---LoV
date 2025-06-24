@@ -130,3 +130,20 @@ function showAlert(message, type) {
 
     setTimeout(()=>div.remove(),5000); //eliminar alert
 }
+
+
+
+//FUNCION PARA CONSUMO DE API
+
+const url = "https://fakestoreapi.com/products"; 
+let bolsa = [];
+const metodo = {method: "GET"};
+fetch (url, metodo)
+.then(data=> {return data.json()})
+.then(data1=>{bolsa = data1;})
+.catch(error=>console.log(error))
+
+setTimeout(() => {
+    console.log(bolsa);
+    
+}, 3000);
