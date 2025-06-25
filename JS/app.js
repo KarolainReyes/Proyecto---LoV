@@ -10,65 +10,65 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function eventListeners() {
-  // Recuperar carrito guardado del local storage
-  const localProduct = localStorage.getItem('products');
-  if (localProduct) {
-    productsArray = JSON.parse(localProduct);
-    productsHtml();
-    updateCartCount();
-    updateTotal();
-  }
-
-  listaProductos.addEventListener('click', getDataElements);
-
-  const finalizarCompra = document.querySelector('#finalizarCompra');
-  const modalResumen = document.getElementById('modalResumen');
-  const listaResumen = document.getElementById('listaResumen');
-  const totalResumen = document.getElementById('totalResumen');
-
-  finalizarCompra.addEventListener('click', () => {
-    if (productsArray.length === 0) {
-      showAlert('Tu carrito está vacío 😥', 'error');
-      return;
+    // Recuperar carrito guardado del local storage
+    const localProduct = localStorage.getItem('products');
+    if (localProduct) {
+        productsArray = JSON.parse(localProduct);
+        productsHtml();
+        updateCartCount();
+        updateTotal();
     }
 
-    listaResumen.innerHTML = '';
-    let total = 0;
+    listaProductos.addEventListener('click', getDataElements);
 
-    productsArray.forEach(producto => {
-      const li = document.createElement('li');
-      li.textContent = `${producto.title} x${producto.quantity} - $${(producto.price * producto.quantity).toFixed(2)}`;
-      listaResumen.appendChild(li);
-      total += producto.price * producto.quantity;
+    const finalizarCompra = document.querySelector('#finalizarCompra');
+    const modalResumen = document.getElementById('modalResumen');
+    const listaResumen = document.getElementById('listaResumen');
+    const totalResumen = document.getElementById('totalResumen');
+
+    finalizarCompra.addEventListener('click', () => {
+        if (productsArray.length === 0) {
+            showAlert('Tu carrito está vacío 😥', 'error');
+            return;
+        }
+
+        listaResumen.innerHTML = '';
+        let total = 0;
+
+        productsArray.forEach(producto => {
+            const li = document.createElement('li');
+            li.textContent = `${producto.title} x${producto.quantity} - $${(producto.price * producto.quantity).toFixed(2)}`;
+            listaResumen.appendChild(li);
+            total += producto.price * producto.quantity;
+        });
+
+        totalResumen.textContent = `$${total.toFixed(2)}`;
+        modalResumen.style.display = 'flex';
     });
-
-    totalResumen.textContent = `$${total.toFixed(2)}`;
-    modalResumen.style.display = 'flex';
-  });
 }
 
 
 confirmarCompra.addEventListener('click', () => {
-  const historial = JSON.parse(localStorage.getItem('historialCompras')) || [];
-  const compra = {
-    productos: [...productsArray],
-    fecha: new Date().toLocaleString(),
-    total: productsArray.reduce((acc, prod) => acc + prod.price * prod.quantity, 0)
-  };
+    const historial = JSON.parse(localStorage.getItem('historialCompras')) || [];
+    const compra = {
+        productos: [...productsArray],
+        fecha: new Date().toLocaleString(),
+        total: productsArray.reduce((acc, prod) => acc + prod.price * prod.quantity, 0)
+    };
 
-  historial.push(compra);
-  localStorage.setItem('historialCompras', JSON.stringify(historial));
+    historial.push(compra);
+    localStorage.setItem('historialCompras', JSON.stringify(historial));
 
-  // Limpiar el carrito
-  productsArray = [];
-  productsHtml();
-  updateTotal();
-  updateCartCount();
+    // Limpiar el carrito
+    productsArray = [];
+    productsHtml();
+    updateTotal();
+    updateCartCount();
 
-  modalResumen.style.display = 'none';
+    modalResumen.style.display = 'none';
 
-  // Redirigir a la página de gracias
-  window.location.href = 'gracias.html';
+    // Redirigir a la página de gracias
+    window.location.href = 'gracias.html';
 });
 
 
@@ -279,9 +279,8 @@ function tarjetaProductosTotal() {
         tarjetita.innerHTML = `
             <h2 class="titulo-tarjeta">${producto.title}</h2>
             <img class="imagen-tarjeta" src=${producto.image}>
-            <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
-            <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0, 400)}...</p>
-            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">añadir al carrito</button>
+            <p class="parrafo-tarjeta" id="precio">$${producto.price}</p>
+            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
             `
         contenedorProductos.appendChild(tarjetita);
     }
@@ -299,9 +298,8 @@ function mostrarProductosFiltrados(lista) {
         tarjetita.innerHTML = `
         <h2 class="titulo-tarjeta">${producto.title}</h2>
         <img class="imagen-tarjeta" src=${producto.image}>
-        <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
-        <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0, 400)}...</p>
-        <button class="boton-tarjeta" type="button" data-id=${producto.id}>añadir al carrito</button>
+        <p class="parrafo-tarjeta" id="precio">$${producto.price}</p>
+        <button class="boton-tarjeta" type="button" data-id=${producto.id}>Añadir al carrito</button>
     `;
         contenedorProductos.appendChild(tarjetita);
     });
@@ -336,8 +334,7 @@ function tarjetaProductos(categoria) {
             <h2 class="titulo-tarjeta">${producto.title}</h2>
             <img class="imagen-tarjeta" src=${producto.image}>
             <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
-            <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0, 400)}...</p>
-            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">añadir al carrito</button>
+            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
             `
             contenedorProductos.appendChild(tarjetita);
         }
@@ -371,17 +368,17 @@ const verHistorial = document.getElementById('verHistorial');
 const contenidoHistorial = document.getElementById('contenidoHistorial');
 
 verHistorial.addEventListener('click', () => {
-  const historial = JSON.parse(localStorage.getItem('historialCompras')) || [];
+    const historial = JSON.parse(localStorage.getItem('historialCompras')) || [];
 
-  if (historial.length === 0) {
-    contenidoHistorial.innerHTML = '<p>No hay compras registradas aún.</p>';
-  } else {
-    contenidoHistorial.innerHTML = '';
+    if (historial.length === 0) {
+        contenidoHistorial.innerHTML = '<p>No hay compras registradas aún.</p>';
+    } else {
+        contenidoHistorial.innerHTML = '';
 
-    historial.forEach((compra, index) => {
-      const divCompra = document.createElement('div');
-      divCompra.classList.add('compra-item');
-      divCompra.innerHTML = `
+        historial.forEach((compra, index) => {
+            const divCompra = document.createElement('div');
+            divCompra.classList.add('compra-item');
+            divCompra.innerHTML = `
         <h4>Compra #${index + 1} - ${compra.fecha}</h4>
         <ul>
           ${compra.productos.map(p => `<li>${p.title} x${p.quantity} - $${(p.price * p.quantity).toFixed(2)}</li>`).join('')}
@@ -389,11 +386,11 @@ verHistorial.addEventListener('click', () => {
         <p><strong>Total:</strong> $${compra.total.toFixed(2)}</p>
         <hr>
       `;
-      contenidoHistorial.appendChild(divCompra);
-    });
-  }
+            contenidoHistorial.appendChild(divCompra);
+        });
+    }
 
-  document.getElementById('modalHistorial').style.display = 'flex';
+    document.getElementById('modalHistorial').style.display = 'flex';
 });
 
 //BORRAR HISTORIAL
@@ -401,23 +398,23 @@ verHistorial.addEventListener('click', () => {
 const borrarHistorial = document.getElementById('borrarHistorial');
 
 borrarHistorial.addEventListener('click', () => {
-  const confirmar = confirm('¿Estás seguro de que deseas borrar todo el historial de compras? Esta acción no se puede deshacer.');
+    const confirmar = confirm('¿Estás seguro de que deseas borrar todo el historial de compras? Esta acción no se puede deshacer.');
 
-  if (confirmar) {
-    localStorage.removeItem('historialCompras');
-    contenidoHistorial.innerHTML = '<p>El historial ha sido eliminado.</p>';
-    showAlert('Historial de compras eliminado 🗑️', 'success');
-  }
+    if (confirmar) {
+        localStorage.removeItem('historialCompras');
+        contenidoHistorial.innerHTML = '<p>El historial ha sido eliminado.</p>';
+        showAlert('Historial de compras eliminado 🗑️', 'success');
+    }
 });
 
 
 //BOTON HAMBURGUESA
 
 document.addEventListener('DOMContentLoaded', () => {
-  const toggleBtn = document.getElementById('menuToggle');
-  const navbarList = document.querySelector('.navbar-list');
+    const toggleBtn = document.getElementById('menuToggle');
+    const navbarList = document.querySelector('.navbar-list');
 
-  toggleBtn.addEventListener('click', () => {
-    navbarList.classList.toggle('active');
-  });
+    toggleBtn.addEventListener('click', () => {
+        navbarList.classList.toggle('active');
+    });
 });

@@ -17,10 +17,9 @@
     <button class="menu-toggle" id="menuToggle">☰</button>
 
     <ul class="navbar-list">
-      <li class="navbar-item">INICIO</li>
-      <li class="navbar-item">CATEGORIAS</li>
-      <li class="navbar-item">COMPRA AHORA</li>
-      <li class="navbar-item">CONTACTO</li>
+      <a href="#inicio"><li class="navbar-item">INICIO</li></a>
+      <a href="#categorias"><li class="navbar-item">CATEGORIAS</li></a>
+      <a href="#contacto"><li class="navbar-item">CONTACTO</li></a>
     </ul>
     <div class="search">
       <input placeholder="Search" class="search-input" type="text" id="buscador" />
@@ -34,7 +33,7 @@
       </button>
     </div>
     <div class="boton-carro">
-      <button type="button"><img src="./IMG/anadir-a-la-cesta.png" alt="añadir a la cesta" id="cesta" /></button>
+      <button type="button"><img src="./IMG/anadir-a-la-cesta.png" alt="Añadir al carrito" id="cesta" /></button>
       <span id="cartCount">0</span>
 
       <div class="cart">
@@ -43,7 +42,6 @@
             <thead>
               <tr>
                 <th>Image</th>
-                <th>Description</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Action</th>
@@ -76,7 +74,7 @@
   </nav>
 
   <main>
-    <section class="pag-principal">
+    <section class="pag-principal" id="inicio"> 
       <section class="slider-container">
 
         <div class="slider">
@@ -87,19 +85,19 @@
 
       </section>
 
-      <section class="seccion-inferior">
+      <section class="seccion-inferior" id="categorias">
         <div class="seccion">
-          <img src="./IMG/entrega-rapida.png" alt="camion de entrega" />
+          <img src="./ICON/fast-delivery.png" alt="camion de entrega" />
           <p>Envios a todo el país</p>
         </div>
         <div class="barra"></div>
         <div class="seccion">
-          <img src="./IMG/billetera.png" alt="medios de pago" />
+          <img src="./ICON/pay.png" alt="medios de pago" />
           <p>Medios de pago</p>
         </div>
         <div class="barra"></div>
         <div class="seccion">
-          <img src="./IMG/venta.png" alt="descuentos" />
+          <img src="./ICON/coupon.png" alt="descuentos" />
           <p>Descuentos</p>
         </div>
       </section>
@@ -137,7 +135,9 @@
       </section>
 
       <section class="filtro-precio">
-        <label for="filtroPrecio">Filtrar por precio:</label>
+        
+          <label for="filtroPrecio">Filtrar por precio:</label>
+        
         <select id="filtroPrecio">
           <option value="default">Todos</option>
           <option value="menor50">Menor a $50</option>
@@ -155,7 +155,7 @@
       </section>
 
   </main>
-  <footer class="footer">
+  <footer class="footer" id="contacto">
     <div class="footer-container">
       <div class="footer-section">
         <h3>Contáctanos</h3>
@@ -175,9 +175,8 @@
       <div class="footer-section">
         <h3>Síguenos</h3>
         <div class="social-icons">
-          <a href="#"><img src="./ICON/facebook.png" alt="Facebook" /></a>
-          <a href="#"><img src="./ICON/instagram.png" alt="Instagram" /></a>
-          <a href="#"><img src="./ICON/twitter.png" alt="Twitter" /></a>
+          <a href="https://discord.com/channels/@karolainreyes"><img src="./ICON/discord.ico" alt="Discord" /></a>
+          <a href="https://github.com/KarolainReyes"><img src="./ICON/github.ico" alt="GitHub" /></a>
         </div>
       </div>
     </div>

@@ -3,14 +3,13 @@
 
 
 :root {
-    --persian-pink: #F288C0;
-    --white:        #ffffff;
-    --rose:         #FD0086;
-    --pink:         #FFC0CB;
-    --gray:         #767676;
-    --red-violet:   #c62884;
-    --ligth-green:  #8FE691;
-
-
-    
+    --pigment-green:    #4CAF50;
+    --persian-pink:     #F288C0;
+    --persian-red:      #C1362C;
+    --red-violet:       #c62884;
+    --vermilion:        #f44336;
+    --white:            #ffffff;
+    --rose:             #FD0086;
+    --pink:             #FFC0CB;
+    --gray:             #767676;
 }
