@@ -559,7 +559,7 @@
  } 
  
  &.success {
-     background-color: var(--light-green);
+     background-color: var(--red-violet);
      color: #fff;
  }
 

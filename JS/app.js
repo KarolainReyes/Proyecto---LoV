@@ -1,6 +1,6 @@
 const listaProductos = document.querySelector('#listaProductos');
 const contentProducts = document.querySelector('#contentProducts');
-const emptyCart = document.querySelector('#emptyCart');
+const finalizarCompra = document.querySelector('#finalizarCompra');
 
 let productsArray = [];
 
@@ -11,22 +11,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function eventListeners() { //funcion que llama los eventos
     listaProductos.addEventListener('click', getDataElements);
-    emptyCart.addEventListener('click', function () {
-        productsArray = [];
-        productsHtml();
-        updateTotal();
-        updateCartCount();
-        tarjetaProductosTotal();
-    });
+    finalizarCompra.addEventListener('click', () => {
+        if (productsArray.length === 0) {
+            showAlert('Tu carrito está vacío 😥', 'error');
+            return;
+        }
 
-    const localProduct = localStorage.getItem('products');
-    if (localProduct) {
-        productsArray = JSON.parse(localProduct);
-        productsHtml();
-        updateCartCount();
-    } else {
-        productsArray = [];
-    }
+        showAlert('¡Gracias por tu compra! 🛒✨', 'success');
+
+        // Simulacion procesamiento de compra
+        setTimeout(() => {
+            productsArray = [];
+            productsHtml();
+            updateTotal();
+            updateCartCount();
+            tarjetaProductosTotal();
+        }, 1000); 
+    });
 }
 
 function updateCartCount() { //contador, suma la cantidad de productos en el carrito
@@ -183,7 +184,7 @@ let bolsa = [];
 async function cargarProductos() {
     const mensaje = document.getElementById('mensajeCarga');
     try {
-        mensaje.style.display='flex';
+        mensaje.style.display = 'flex';
         const respuesta = await fetch(url);
         if (!respuesta.ok) throw new Error('Error al cargar productos');
         bolsa = await respuesta.json();
@@ -192,8 +193,8 @@ async function cargarProductos() {
         mensaje.innerHTML = `<span style="color: red;">Error al cargar productos 😢</span>`;
         console.error('Error al obtener productos:', error.message);
     } finally {
-        setTimeout (()=>{
-            mensaje.style.display='none';
+        setTimeout(() => {
+            mensaje.style.display = 'none';
         }, 1000)
     }
 }
