@@ -154,52 +154,54 @@
 
   </main>
   <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-section">
-      <h3>Contáctanos</h3>
-      <p>Email: contacto@lovstore.co</p>
-      <p>Tel: +57 123 456 7890</p>
-    </div>
+    <div class="footer-container">
+      <div class="footer-section">
+        <h3>Contáctanos</h3>
+        <p>Email: contacto@lovstore.co</p>
+        <p>Tel: +57 123 456 7890</p>
+      </div>
 
-    <div class="footer-section">
-      <h3>Información</h3>
-      <ul>
-        <li><a href="#">Política de privacidad</a></li>
-        <li><a href="#">Términos y condiciones</a></li>
-        <li><a href="#">Ayuda</a></li>
-      </ul>
-    </div>
+      <div class="footer-section">
+        <h3>Información</h3>
+        <ul>
+          <li><a href="#">Política de privacidad</a></li>
+          <li><a href="#">Términos y condiciones</a></li>
+          <li><a href="#">Ayuda</a></li>
+        </ul>
+      </div>
 
-    <div class="footer-section">
-      <h3>Síguenos</h3>
-      <div class="social-icons">
-        <a href="#"><img src="./ICON/facebook.png" alt="Facebook" /></a>
-        <a href="#"><img src="./ICON/instagram.png" alt="Instagram" /></a>
-        <a href="#"><img src="./ICON/twitter.png" alt="Twitter" /></a>
+      <div class="footer-section">
+        <h3>Síguenos</h3>
+        <div class="social-icons">
+          <a href="#"><img src="./ICON/facebook.png" alt="Facebook" /></a>
+          <a href="#"><img src="./ICON/instagram.png" alt="Instagram" /></a>
+          <a href="#"><img src="./ICON/twitter.png" alt="Twitter" /></a>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="footer-bottom">
-    &copy; <span id="year"></span> LoV Store. Todos los derechos reservados.
-  </div>
-</footer>
+    <div class="footer-bottom">
+      &copy; <span id="year"></span> LoV Store. Todos los derechos reservados.
+    </div>
+  </footer>
 
-<div class="modal" id="modalResumen">
-  <div class="modal-content">
-    <h2>Resumen de tu compra</h2>
-    <ul id="listaResumen"></ul>
-    <p class="total-resumen">Total: <span id="totalResumen"></span></p>
-    <button id="confirmarCompra">Confirmar compra</button>
+  <div class="modal" id="modalResumen">
+    <div class="modal-content">
+      <h2>Resumen de tu compra</h2>
+      <ul id="listaResumen"></ul>
+      <p class="total-resumen">Total: <span id="totalResumen"></span></p>
+      <button id="confirmarCompra">Confirmar compra</button>
+    </div>
   </div>
-</div>
-<div class="modal" id="modalHistorial">
-  <div class="modal-content">
-    <h2>🧾 Historial de compras</h2>
-    <div id="contenidoHistorial"></div>
-    <button onclick="document.getElementById('modalHistorial').style.display='none'">Cerrar</button>
+  <div class="modal" id="modalHistorial">
+    <div class="modal-content">
+      <h2>🧾 Historial de compras</h2>
+      <div id="contenidoHistorial"></div>
+      <button onclick="document.getElementById('modalHistorial').style.display='none'">Cerrar</button>
+      <button id="borrarHistorial" style="margin-top: 0.5rem; background-color: #f44336;">Borrar historial</button>
+
+    </div>
   </div>
-</div>
 </body>
 <script src="./JS/app.js"></script>
 

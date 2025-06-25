@@ -9,35 +9,45 @@ document.addEventListener('DOMContentLoaded', function () {
 
 });
 
-function eventListeners() { //funcion que llama los eventos
-    listaProductos.addEventListener('click', getDataElements);
-const finalizarCompra = document.querySelector('#finalizarCompra');
-const modalResumen = document.getElementById('modalResumen');
-const listaResumen = document.getElementById('listaResumen');
-const totalResumen = document.getElementById('totalResumen');
-const confirmarCompra = document.getElementById('confirmarCompra');
-
-finalizarCompra.addEventListener('click', () => {
-  if (productsArray.length === 0) {
-    showAlert('Tu carrito está vacío 😥', 'error');
-    return;
+function eventListeners() {
+  // Recuperar carrito guardado del local storage
+  const localProduct = localStorage.getItem('products');
+  if (localProduct) {
+    productsArray = JSON.parse(localProduct);
+    productsHtml();
+    updateCartCount();
+    updateTotal();
   }
 
-  listaResumen.innerHTML = '';
-  let total = 0;
+  listaProductos.addEventListener('click', getDataElements);
 
-  productsArray.forEach(producto => {
-    const li = document.createElement('li');
-    li.textContent = `${producto.title} x${producto.quantity} - $${(producto.price * producto.quantity).toFixed(2)}`;
-    listaResumen.appendChild(li);
-    total += producto.price * producto.quantity;
+  const finalizarCompra = document.querySelector('#finalizarCompra');
+  const modalResumen = document.getElementById('modalResumen');
+  const listaResumen = document.getElementById('listaResumen');
+  const totalResumen = document.getElementById('totalResumen');
+  const confirmarCompra = document.getElementById('confirmarCompra');
+
+  finalizarCompra.addEventListener('click', () => {
+    if (productsArray.length === 0) {
+      showAlert('Tu carrito está vacío 😥', 'error');
+      return;
+    }
+
+    listaResumen.innerHTML = '';
+    let total = 0;
+
+    productsArray.forEach(producto => {
+      const li = document.createElement('li');
+      li.textContent = `${producto.title} x${producto.quantity} - $${(producto.price * producto.quantity).toFixed(2)}`;
+      listaResumen.appendChild(li);
+      total += producto.price * producto.quantity;
+    });
+
+    totalResumen.textContent = `$${total.toFixed(2)}`;
+    modalResumen.style.display = 'flex';
   });
-
-  totalResumen.textContent = `$${total.toFixed(2)}`;
-  modalResumen.style.display = 'flex';
-});
-
 }
+
 
 confirmarCompra.addEventListener('click', () => {
   const historial = JSON.parse(localStorage.getItem('historialCompras')) || [];
@@ -385,4 +395,18 @@ verHistorial.addEventListener('click', () => {
   }
 
   document.getElementById('modalHistorial').style.display = 'flex';
+});
+
+//BORRAR HISTORIAL
+
+const borrarHistorial = document.getElementById('borrarHistorial');
+
+borrarHistorial.addEventListener('click', () => {
+  const confirmar = confirm('¿Estás seguro de que deseas borrar todo el historial de compras? Esta acción no se puede deshacer.');
+
+  if (confirmar) {
+    localStorage.removeItem('historialCompras');
+    contenidoHistorial.innerHTML = '<p>El historial ha sido eliminado.</p>';
+    showAlert('Historial de compras eliminado 🗑️', 'success');
+  }
 });
