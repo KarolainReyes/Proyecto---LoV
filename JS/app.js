@@ -162,7 +162,7 @@ function cleanHtml() {
 //mensaje de alert
 
 function showAlert(message, type) {
-    const nonRepeatAlert = document.querySelector('alert');//selecciona el div del alert y con la funcion nonReapeatAlert, no permite que se repita
+    const nonRepeatAlert = document.querySelector('.alert');//selecciona el div del alert y con la funcion nonReapeatAlert, no permite que se repita
     if (nonRepeatAlert) nonRepeatAlert.remove();
     const div = document.createElement('div');
     div.classList.add('alert', type);
@@ -245,7 +245,6 @@ function tarjetaProductosTotal() {
     )
 }
 
-setTimeout(() => { tarjetaProductosTotal() }, 500)
 
 
 function mostrarProductosFiltrados(lista) {
@@ -303,7 +302,7 @@ function tarjetaProductos(categoria) {
 }
 
 const categoriaContenedor = document.getElementsByClassName("stones-container")[0];
-categoriaContenedor.addEventListener("click", () => {
+categoriaContenedor.addEventListener("click", (event) => {
     const clickeado = event.target.id;
     switch (clickeado) {
         case "men's clothing":
