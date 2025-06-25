@@ -24,7 +24,7 @@ Esta vista permite observar todos los productos almacenados en tarjetas. Estas t
 
 ## Vista Detalle producto
 
-En esta vista se busca mostrar mucho más a detalle el producto, en dónde se encontrará una tarjeta que almacena el nombre, la imagen del producto, su descripción y un botón para añadir el producto al carrito.
+En esta vista se busca mostrar mucho más a detalle el producto, en dónde se encontrará una tarjeta que almacena el nombre, la imagen del producto, su descripción y un botón para añadir el producto al carrito.y
 
 ![Vista al detalle del producto](image-3.png)
 
