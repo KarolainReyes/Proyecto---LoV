@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 function eventListeners() { //funcion que llama los eventos
     listaProductos.addEventListener('click', getDataElements);
-    emptyCart.addEventListener ('click', function(){
+    emptyCart.addEventListener('click', function () {
         productsArray = [];
         productsHtml();
         updateTotal();
@@ -20,7 +20,7 @@ function eventListeners() { //funcion que llama los eventos
     });
 
     const localProduct = localStorage.getItem('products');
-    if(localProduct) {
+    if (localProduct) {
         productsArray = JSON.parse(localProduct);
         productsHtml();
         updateCartCount();
@@ -170,7 +170,7 @@ function showAlert(message, type) {
 
     document.body.appendChild(div); //introducir alert al body
 
-    setTimeout(() => div.remove(), 5000); //eliminar alert
+    setTimeout(() => div.remove(), 1000); //eliminar alert
 }
 
 
@@ -190,26 +190,67 @@ setTimeout(() => {
 
 }, 400);
 
+document.getElementById("filtroPrecio").addEventListener("change", async (e) => {
+    const valor = e.target.value;
+    let productosFiltrados = [];
+
+    switch (valor) {
+        case "menor50":
+            productosFiltrados = bolsa.filter(producto => producto.price < 50);
+            break;
+        case "entre50y100":
+            productosFiltrados = bolsa.filter(producto => producto.price >= 50 && producto.price <= 100);
+            break;
+        case "mayor100":
+            productosFiltrados = bolsa.filter(producto => producto.price > 100);
+            break;
+        default:
+            productosFiltrados = bolsa;
+    }
+
+    mostrarProductosFiltrados(productosFiltrados);
+});
+
+
 
 function tarjetaProductosTotal() {
     const contenedorProductos = document.getElementById("listaProductos");
     contenedorProductos.innerHTML = "";
     bolsa.forEach(producto => {
-            let tarjetita = document.createElement("div");
-            tarjetita.classList.add("contenedor-tarjeta");
-            tarjetita.innerHTML = `
+        let tarjetita = document.createElement("div");
+        tarjetita.classList.add("contenedor-tarjeta");
+        tarjetita.innerHTML = `
             <h2 class="titulo-tarjeta">${producto.title}</h2>
-          <img class="imagen-tarjeta" src=${producto.image}>
-          <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
-          <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0,400)}...</p>
-          <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">añadir al carrito</button>
+            <img class="imagen-tarjeta" src=${producto.image}>
+            <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
+            <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0, 400)}...</p>
+            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">añadir al carrito</button>
             `
-            contenedorProductos.appendChild(tarjetita);
-        }
+        contenedorProductos.appendChild(tarjetita);
+    }
     )
 }
 
-setTimeout(()=>{tarjetaProductosTotal()},500)
+setTimeout(() => { tarjetaProductosTotal() }, 500)
+
+
+function mostrarProductosFiltrados(lista) {
+    const contenedorProductos = document.getElementById("listaProductos");
+    contenedorProductos.innerHTML = "";
+    lista.forEach(producto => {
+        let tarjetita = document.createElement("div");
+        tarjetita.classList.add("contenedor-tarjeta");
+        tarjetita.innerHTML = `
+        <h2 class="titulo-tarjeta">${producto.title}</h2>
+        <img class="imagen-tarjeta" src=${producto.image}>
+        <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
+        <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0, 400)}...</p>
+        <button class="boton-tarjeta" type="button" data-id=${producto.id}>añadir al carrito</button>
+    `;
+        contenedorProductos.appendChild(tarjetita);
+    });
+}
+
 
 function tarjetaProductos(categoria) {
     const contenedorProductos = document.getElementById("listaProductos");
@@ -220,10 +261,10 @@ function tarjetaProductos(categoria) {
             tarjetita.classList.add("contenedor-tarjeta");
             tarjetita.innerHTML = `
             <h2 class="titulo-tarjeta">${producto.title}</h2>
-          <img class="imagen-tarjeta" src=${producto.image}>
-          <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
-          <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0,400)}...</p>
-          <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">añadir al carrito</button>
+            <img class="imagen-tarjeta" src=${producto.image}>
+            <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
+            <p class="parrafo-tarjeta" id="descripcion">${producto.description.slice(0, 400)}...</p>
+            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">añadir al carrito</button>
             `
             contenedorProductos.appendChild(tarjetita);
         }
@@ -251,4 +292,3 @@ categoriaContenedor.addEventListener("click", () => {
             break;
     }
 })
-

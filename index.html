@@ -68,7 +68,7 @@
       </div>
 
     </div>
-    
+
   </nav>
 
   <main>
@@ -130,9 +130,18 @@
       </div>
       <section class="productos" id="generalProductos">
       </section>
+      <section class="filtro-precio">
+        <label for="filtroPrecio">Filtrar por precio:</label>
+        <select id="filtroPrecio">
+          <option value="default">Todos</option>
+          <option value="menor50">Menor a $50</option>
+          <option value="entre50y100">$50 - $100</option>
+          <option value="mayor100">Mayor a $100</option>
+        </select>
+      </section>
       <section class="productos" id="listaProductos">
       </section>
-      
+
   </main>
 </body>
 <script src="./JS/app.js"></script>
