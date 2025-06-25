@@ -730,3 +730,115 @@
 #borrarHistorial:hover {
   background-color: #d32f2f;
 }
+
+/* Botón hamburguesa (solo visible en pantallas pequeñas) */
+.menu-toggle {
+  display: none;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--rose);
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-list {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    background-color: var(--white);
+    padding: 1rem 0;
+  }
+
+  .navbar-list.active {
+    display: flex;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .navbar-list {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .search {
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .search-input {
+    width: 100%;
+  }
+
+  .boton-carro {
+    align-self: flex-end;
+    margin-top: 1rem;
+  }
+
+  .slider {
+    flex-direction: column;
+    margin-top: 5rem;
+  }
+
+  .seccion-inferior {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .seccion {
+    width: 80%;
+    text-align: center;
+  }
+
+  .barra {
+    display: none;
+  }
+
+  .stones-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .productos {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  .contenedor-tarjeta {
+    width: 90% !important;
+    height: auto;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+
+  #verHistorial,
+  #borrarHistorial {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+

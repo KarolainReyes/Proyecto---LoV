@@ -409,3 +409,15 @@ borrarHistorial.addEventListener('click', () => {
     showAlert('Historial de compras eliminado 🗑️', 'success');
   }
 });
+
+
+//BOTON HAMBURGUESA
+
+document.addEventListener('DOMContentLoaded', () => {
+  const toggleBtn = document.getElementById('menuToggle');
+  const navbarList = document.querySelector('.navbar-list');
+
+  toggleBtn.addEventListener('click', () => {
+    navbarList.classList.toggle('active');
+  });
+});
