@@ -60,6 +60,8 @@
               <tr>
                 <td colspan="5">
                   <button type="button" id="finalizarCompra">Finalizar compra</button>
+                  <button type="button" id="verHistorial">Ver historial</button>
+
                 </td>
               </tr>
             </tfoot>
@@ -183,6 +185,21 @@
   </div>
 </footer>
 
+<div class="modal" id="modalResumen">
+  <div class="modal-content">
+    <h2>Resumen de tu compra</h2>
+    <ul id="listaResumen"></ul>
+    <p class="total-resumen">Total: <span id="totalResumen"></span></p>
+    <button id="confirmarCompra">Confirmar compra</button>
+  </div>
+</div>
+<div class="modal" id="modalHistorial">
+  <div class="modal-content">
+    <h2>🧾 Historial de compras</h2>
+    <div id="contenidoHistorial"></div>
+    <button onclick="document.getElementById('modalHistorial').style.display='none'">Cerrar</button>
+  </div>
+</div>
 </body>
 <script src="./JS/app.js"></script>
 

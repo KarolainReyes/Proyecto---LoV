@@ -636,3 +636,79 @@
   font-size: 0.8rem;
   color: var(--white);
 }
+
+/*MODAL*/
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.6);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  text-align: center;
+}
+
+.modal-content ul {
+  text-align: left;
+  margin-bottom: 1rem;
+}
+
+.modal-content button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+
+/*PAGINA DE AGRADECIMIENTO*/
+
+.gracias-container {
+  text-align: center;
+  margin-top: 10rem;
+  font-family: sans-serif;
+}
+
+.gracias-container a {
+  display: inline-block;
+  margin-top: 2rem;
+  padding: 0.7rem 1.5rem;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+
+#contenidoHistorial {
+  text-align: left;
+  max-height: 300px;
+  overflow-y: auto;
+  margin-bottom: 1rem;
+}
+
+#verHistorial {
+  background-color: #2196F3;
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
