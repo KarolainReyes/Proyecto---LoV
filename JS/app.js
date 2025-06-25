@@ -251,6 +251,23 @@ function mostrarProductosFiltrados(lista) {
     });
 }
 
+const inputBusqueda = document.getElementById('buscador');
+
+inputBusqueda.addEventListener('input', ()=> {
+    const texto = inputBusqueda.value.toLowerCase().trim();
+
+    if (texto === "") {
+        tarjetaProductosTotal();
+        return;
+    }
+
+    const productosFiltrados = bolsa.filter(producto=>
+        producto.title.toLowerCase().includes(texto)
+    );
+    
+    mostrarProductosFiltrados(productosFiltrados);
+})
+
 
 function tarjetaProductos(categoria) {
     const contenedorProductos = document.getElementById("listaProductos");
