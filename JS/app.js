@@ -179,16 +179,30 @@ function showAlert(message, type) {
 
 const url = "https://fakestoreapi.com/products";
 let bolsa = [];
-const metodo = { method: "GET" };
-fetch(url, metodo)
-    .then(data => { return data.json() })
-    .then(data1 => { bolsa = data1; })
-    .catch(error => console.log(error))
 
-setTimeout(() => {
-    console.log(bolsa);
+async function cargarProductos() {
+    const mensaje = document.getElementById('mensajeCarga');
+    try {
+        mensaje.style.display='flex';
+        const respuesta = await fetch(url);
+        if (!respuesta.ok) throw new Error('Error al cargar productos');
+        bolsa = await respuesta.json();
+        tarjetaProductosTotal(); // llama la data cuando ya esta
+    } catch (error) {
+        mensaje.innerHTML = `<span style="color: red;">Error al cargar productos 😢</span>`;
+        console.error('Error al obtener productos:', error.message);
+    } finally {
+        setTimeout (()=>{
+            mensaje.style.display='none';
+        }, 1000)
+    }
+}
 
-}, 400);
+// Llamamos la función al cargar la página
+document.addEventListener('DOMContentLoaded', () => {
+    cargarProductos();
+});
+
 
 document.getElementById("filtroPrecio").addEventListener("change", async (e) => {
     const valor = e.target.value;
@@ -253,7 +267,7 @@ function mostrarProductosFiltrados(lista) {
 
 const inputBusqueda = document.getElementById('buscador');
 
-inputBusqueda.addEventListener('input', ()=> {
+inputBusqueda.addEventListener('input', () => {
     const texto = inputBusqueda.value.toLowerCase().trim();
 
     if (texto === "") {
@@ -261,10 +275,10 @@ inputBusqueda.addEventListener('input', ()=> {
         return;
     }
 
-    const productosFiltrados = bolsa.filter(producto=>
+    const productosFiltrados = bolsa.filter(producto =>
         producto.title.toLowerCase().includes(texto)
     );
-    
+
     mostrarProductosFiltrados(productosFiltrados);
 })
 
