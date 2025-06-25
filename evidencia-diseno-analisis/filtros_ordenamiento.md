@@ -1,26 +1,87 @@
-# Filtros y Ordenamientos
+# 🧠 Justificación de Filtros y Ordenamientos - Tienda LoV
 
-## 🎯 Justificación de Usabilidad
+Este documento explica las decisiones detrás de los **filtros por precio**, **búsqueda por texto** y **ordenamiento por categoría** implementados en la tienda online **LoV**, desde una perspectiva de **usabilidad y experiencia de usuario (UX)**.
 
-- Se implementó un **filtro por precio** para facilitar la exploración de productos según el presupuesto:
-  - Menor a $50
-  - Entre $50 y $100
-  - Mayor a $100
+---
 
-- Se agregó un sistema de **ordenamiento** (por precio o nombre) para mejorar la navegación y comparación entre productos.
+## 🎯 Objetivo General
 
-- El diseño del filtro usa un `<select>` claro y accesible, sin necesidad de recargar la página.
+Facilitar al usuario la **navegación**, **exploración** y **selección** de productos, brindando mecanismos intuitivos para encontrar lo que busca sin perder tiempo o sentirse abrumado por la cantidad de productos.
 
-## ⚙️ Detalles Técnicos
+---
 
-- El filtro por precio usa `.filter()` sobre el array de productos:
+## 💰 Filtro por Precio
+
+### 🎨 Interfaz:
+Se implementó un `<select>` con las siguientes opciones:
+
+- Menor a $50
+- Entre $50 y $100
+- Mayor a $100
+
+### 👩‍💻 Funcionalidad:
+Filtra dinámicamente el array `bolsa` según el rango de precio seleccionado usando `.filter()`:
+
 ```js
-productos.filter(p => p.price < 50)
+bolsa.filter(producto => producto.price < 50);
 ```
 
-- El ordenamiento usa `.sort()` según la opción elegida:
+### ✅ Justificación UX:
+- El precio es una de las variables más importantes para decidir una compra.
+- Se agrupan en rangos reconocibles y útiles para el usuario promedio.
+- Permite explorar productos según su presupuesto sin necesidad de recargar la página.
+
+---
+
+## 🔍 Búsqueda por Título
+
+### 🎨 Interfaz:
+Un `input` de tipo texto filtra en tiempo real mientras el usuario escribe.
+
+### 👩‍💻 Funcionalidad:
+Usa `.includes()` para comparar el texto ingresado con el `title` de cada producto:
+
 ```js
-productos.sort((a, b) => a.price - b.price) // menor a mayor
+producto.title.toLowerCase().includes(texto);
 ```
 
-- Todo se ejecuta con `async/await` y se actualiza la vista de productos dinámicamente.
+### ✅ Justificación UX:
+- Mejora la eficiencia en la búsqueda específica.
+- Respuesta inmediata sin botón de "buscar".
+- Ayuda a usuarios que ya saben lo que quieren o recuerdan el nombre de un producto.
+
+---
+
+## 🧩 Filtro por Categorías
+
+### 🎨 Interfaz:
+Se usan botones (o áreas clicables) por categoría con `id` representando:
+
+- `"men's clothing"`
+- `"women's clothing"`
+- `"jewelery"`
+- `"electronics"`
+
+### 👩‍💻 Funcionalidad:
+Un `switch` evalúa el `id` del clic y filtra el array `bolsa`:
+
+```js
+if (producto.category == categoria) { ... }
+```
+
+### ✅ Justificación UX:
+- Categorizar productos reduce la carga cognitiva.
+- Es una forma natural de exploración en tiendas online.
+- Facilita la comparación entre productos similares.
+
+---
+
+## ⚡ Combinación y rendimiento
+
+Todos los filtros trabajan sobre el mismo array (`bolsa`) y actualizan el DOM dinámicamente, ofreciendo una experiencia rápida, fluida y sin recargas.
+
+---
+
+## 📌 Conclusión
+
+Los filtros y ordenamientos en **LoV** no solo cumplen una función técnica, sino que están pensados para ayudar al usuario a encontrar productos más fácilmente, mejorar la navegación, reducir frustraciones y generar una experiencia de compra más agradable.

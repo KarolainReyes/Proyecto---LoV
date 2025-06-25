@@ -1,11 +1,13 @@
 const listaProductos = document.querySelector('#listaProductos');
 const contentProducts = document.querySelector('#contentProducts');
 const finalizarCompra = document.querySelector('#finalizarCompra');
+const confirmarCompra = document.getElementById('confirmarCompra');
 
 let productsArray = [];
 
 document.addEventListener('DOMContentLoaded', function () {
     eventListeners();
+
 
 });
 

@@ -1,2 +1,0 @@
-# Proyecto---LoV
-FakeStore
