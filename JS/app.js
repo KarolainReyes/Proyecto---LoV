@@ -25,7 +25,6 @@ function eventListeners() {
   const modalResumen = document.getElementById('modalResumen');
   const listaResumen = document.getElementById('listaResumen');
   const totalResumen = document.getElementById('totalResumen');
-  const confirmarCompra = document.getElementById('confirmarCompra');
 
   finalizarCompra.addEventListener('click', () => {
     if (productsArray.length === 0) {
