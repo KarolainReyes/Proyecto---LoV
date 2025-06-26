@@ -733,7 +733,7 @@
     padding: 1rem;
   }
 
-  /* Fila superior con logo, buscador y menú */
+  /* FILA SUPERIOR DEL NAVBAR */
   .navbar-top {
     display: flex;
     align-items: center;
@@ -766,7 +766,7 @@
 
   
 
-  /* Menú desplegable */
+  /* 🍔 MENU DESPLEGABLE */
   .navbar-list {
     display: none;
     flex-direction: column;
@@ -796,7 +796,7 @@
   }
 
   .seccion {
-    width: 10vh; /* O ajusta a 33.33% si prefieres columnas iguales */
+    width: 10vh; 
     max-width: none;
 
   }
@@ -833,11 +833,11 @@
     gap: 1.5rem;
     padding: 1rem;
     justify-content: flex-start;
-    scrollbar-width: none; /* Oculta scroll en Firefox */
+    scrollbar-width: none; 
   }
 
   .stones-container::-webkit-scrollbar {
-    display: none; /* Oculta scroll en Chrome */
+    display: none; 
   }
 
   .stone-wrapper {
@@ -850,7 +850,7 @@
     font-size: 0.7rem;
   }
 
-    /* 🪨 FILTRO */
+    /* ⚓ FILTRO */
 
   .filtro-precio {
     flex-direction: column;
@@ -868,7 +868,7 @@
     font-size: 0.9rem;
     padding: 0.4rem 0.8rem;
   }
-
+  /* 🛒 CARRO */
   .cart {
     width: 90vw;
     left: 50%;
@@ -882,7 +882,7 @@
   }
 
   .cart table {
-    min-width: 600px; /* ✅ Evita que las columnas se achiquen demasiado */
+    min-width: 600px; 
   }
 
   .cart tbody td img {
