@@ -105,12 +105,12 @@ function selectData(prod) { //llama a la funcion que selleciona los datos del el
     const exists = productsArray.some(prod => prod.id === productObj.id) //.someeste metodo se utiliza en arrays para verificar si almenos un elemento cumple con una condicion, retorna true o false
 
     if (exists) {
-        showAlert('El producto ya existe en el carrito', 'error')
+        showAlert('El producto ya existe en el carrito 😬', 'error')
         return;
     }
 
     productsArray = [...productsArray, productObj] //copia la lista de productsArray y obtiene productObj
-    showAlert('El producto fue agregado exitosamente', 'success');
+    showAlert('El producto fue agregado exitosamente 😊', 'success');
     productsHtml();
     updateCartCount(); //contador
     updateTotal();
@@ -191,7 +191,7 @@ function updateQuantity(e) {
 //FUNCION PARA ELIMINAR PRODUCTOS
 function destroyProduct(idProd) {
     productsArray = productsArray.filter(prod => prod.id !== idProd);
-    showAlert('El producto fue eliminado con éxito', 'success');
+    showAlert('El producto fue eliminado con éxito 😉', 'success');
     productsHtml();
     updateCartCount();
     updateTotal();
@@ -410,13 +410,12 @@ borrarHistorial.addEventListener('click', () => {
 });
 
 
-//BOTON HAMBURGUESA
-
 document.addEventListener('DOMContentLoaded', () => {
-    const toggleBtn = document.getElementById('menuToggle');
-    const navbarList = document.querySelector('.navbar-list');
+  const menuToggle = document.getElementById('menuToggle');
+  const navbarList = document.getElementById('navbarList');
 
-    toggleBtn.addEventListener('click', () => {
-        navbarList.classList.toggle('active');
-    });
+  menuToggle.addEventListener('click', () => {
+    navbarList.classList.toggle('active');
+  });
 });
+

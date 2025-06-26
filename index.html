@@ -10,29 +10,28 @@
 </head>
 
 <body>
-  <header class="header"></header>
+  <header class="header">
+  </header>
 
-  <nav class="navbar">
-    <h1 class="title">LoV</h1>
-    <button class="menu-toggle" id="menuToggle">☰</button>
-
-    <ul class="navbar-list">
-      <a href="#inicio"><li class="navbar-item">INICIO</li></a>
-      <a href="#categorias"><li class="navbar-item">CATEGORIAS</li></a>
-      <a href="#contacto"><li class="navbar-item">CONTACTO</li></a>
-    </ul>
+<nav class="navbar">
+  <div class="navbar-top">
+    <img src="./IMG/b782b767-d2e1-4231-b1fa-ac1acf233e7a.png" alt="Logo LoV" id="logoLov">
+    
     <div class="search">
       <input placeholder="Search" class="search-input" type="text" id="buscador" />
-      <button class="search-button">
-        <svg viewBox="0 0 16 16" class="bi bi-search" fill="currentColor" height="16" width="16"
-          xmlns="http://www.w3.org/2000/svg">
-          <path
-            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0">
-          </path>
-        </svg>
-      </button>
+      <button class="search-button">🔍</button>
     </div>
-    <div class="boton-carro">
+
+    <button class="menu-toggle" id="menuToggle">☰</button>
+  </div>
+
+  <ul class="navbar-list" id="navbarList">
+    <li class="navbar-item"><a href="#inicio" class="active">INICIO</a></li>
+    <li class="navbar-item"><a href="#categorias">CATEGORIAS</a></li>
+    <li class="navbar-item"><a href="#contacto">CONTACTO</a></li>
+  </ul>
+
+  <div class="boton-carro">
       <button type="button"><img src="./IMG/anadir-a-la-cesta.png" alt="Añadir al carrito" id="cesta" /></button>
       <span id="cartCount">0</span>
 
@@ -70,11 +69,9 @@
       </div>
 
     </div>
-
-  </nav>
-
+</nav>
   <main>
-    <section class="pag-principal" id="inicio"> 
+    <section class="pag-principal" id="inicio">
       <section class="slider-container">
 
         <div class="slider">
@@ -135,9 +132,9 @@
       </section>
 
       <section class="filtro-precio">
-        
-          <label for="filtroPrecio">Filtrar por precio:</label>
-        
+
+        <label for="filtroPrecio">Filtrar por precio:</label>
+
         <select id="filtroPrecio">
           <option value="default">Todos</option>
           <option value="menor50">Menor a $50</option>
@@ -153,7 +150,6 @@
 
       <section class="productos" id="listaProductos">
       </section>
-
   </main>
   <footer class="footer" id="contacto">
     <div class="footer-container">
@@ -205,5 +201,4 @@
   </div>
 </body>
 <script src="./JS/app.js"></script>
-
 </html>
