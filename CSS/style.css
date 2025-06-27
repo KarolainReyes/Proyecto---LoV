@@ -10,6 +10,9 @@
   font-family: 'Lexend Giga', sans-serif;
 }
 
+html::-webkit-scrollbar { width: 0px; }
+.cart::-webkit-scrollbar { width: 0px; }
+
 /* ============================
    ⏳ PÁGINA DE CARGA
 ============================ */
@@ -60,6 +63,7 @@
   position: fixed;
   box-shadow: 0 4px 12px rgba(58, 55, 55, 0.1);
   z-index: 100;
+  flex-wrap: wrap;
 }
 
 .navbar-top {
@@ -454,7 +458,7 @@
   position: absolute;
   opacity: 0;
   right: 1vw;
-  top: 8vh;
+  top: 5vh;
   background-color: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(5px);
   padding: 2rem;
@@ -533,6 +537,10 @@
 .boton-carro:hover .cart {
   display: block;
   opacity: 1;
+}
+
+#cesta {
+  width: 5vh;
 }
 
 /* ============================
@@ -762,6 +770,7 @@
     border: none;
     color: var(--rose);
     cursor: pointer;
+    position: relative;
   }
 
   
@@ -774,7 +783,9 @@
     gap: 1rem;
     margin-top: 1rem;
   }
-
+  .menu-toggle {
+    right: 2vw;
+  }
   .navbar-list.active {
     display: flex;
   }
@@ -783,8 +794,15 @@
   .boton-carro {
     align-self: flex-end;
     position: relative;
+    right: 2vw;
+    display: flex ;
+    gap: 1vw;
   }
 
+  #cartCount{
+    align-self: end;
+    
+  }
 
   /* 🔻 SECCIÓN INFERIOR */
 .seccion-inferior {
@@ -870,22 +888,26 @@
   }
   /* 🛒 CARRO */
   .cart {
-    width: 90vw;
-    left: 50%;
-    right: auto;
-    transform: translateX(-100%);
-    padding: 1rem;
-    font-size: 0.9rem;
+    width: 95vw;
+max-width: 95vw;
+right: -5vw;
+    padding: 0.5rem;
+    font-size: clamp(0.8rem, 0.5vw,0.9rem );
     max-height: 60vh;
-    overflow-y: auto;
-    overflow-x: auto;
+    position: absolute;
+    top:3vh;
+    flex-wrap: wrap;
+    
   }
 
   .cart table {
-    min-width: 600px;
     width: 100%;
     table-layout: fixed;
+    gap:1%;
+    font-size: clamp(0.7rem, 0.5vw,0.9rem );
   }
+
+  .cart table th{padding: 0;padding-bottom: 1rem;flex-wrap: wrap;word-break: break-all;}
 
   .cart tbody td img {
     width: 60px;
@@ -906,6 +928,10 @@
   .cart tfoot td button {
     font-size: 0.9rem;
     padding: 0.6rem;
+  }
+
+  #cesta {
+    width: 3vh;
   }
 
 }
