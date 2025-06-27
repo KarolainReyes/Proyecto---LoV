@@ -224,6 +224,10 @@ function showAlert(message, type) {
 
 const url = "https://fakestoreapi.com/products";
 let bolsa = [];
+let bolsaHombre=[];
+let bolsaMujer= [];
+let bolsaElec= [];
+let bolsaJoy= [];
 
 async function cargarProductos() {
     const mensaje = document.getElementById('mensajeCarga');
@@ -240,130 +244,136 @@ async function cargarProductos() {
         setTimeout(() => {
             mensaje.style.display = 'none';
         }, 1000)
-    }
+    };
+     bolsaHombre= bolsa.filter(producto => producto.category=="men's clothing");
+     bolsaMujer= bolsa.filter(producto => producto.category=="women's clothing");
+     bolsaElec= bolsa.filter(producto => producto.category=="electronics");
+    bolsaJoy= bolsa.filter(producto => producto.category=="jewelery");
+    
 }
+
+
+    
+
 
 // Llamamos la función al cargar la página
 document.addEventListener('DOMContentLoaded', () => {
     cargarProductos();
 });
 
+async function divisionCategoria(lista) {
+    await cargarProductos();  // Asegúrate de que esta función esté bien definida
+    console.log(lista);
 
-document.getElementById("filtroPrecio").addEventListener("change", async (e) => {
-    const valor = e.target.value;
-    let productosFiltrados = [];
+    // Filtrar por precio cuando se cambia la selección
+    document.getElementById("filtroPrecio").addEventListener("change", async (e) => {
+        const valor = e.target.value;
 
-    switch (valor) {
-        case "menor50":
-            productosFiltrados = bolsa.filter(producto => producto.price < 50);
-            break;
-        case "entre50y100":
-            productosFiltrados = bolsa.filter(producto => producto.price >= 50 && producto.price <= 100);
-            break;
-        case "mayor100":
-            productosFiltrados = bolsa.filter(producto => producto.price > 100);
-            break;
-        default:
-            productosFiltrados = bolsa;
-    }
+        let productosFiltrados = lista;
 
-    mostrarProductosFiltrados(productosFiltrados);
-});
+        // Filtrar por el precio
+        switch (valor) {
+            case "Todos":
+                break; // No hay filtro por precio, ya tenemos la lista completa
+            case "menor50":
+                productosFiltrados = lista.filter(producto => producto.price < 50);
+                break;
+            case "entre50y100":
+                productosFiltrados = lista.filter(producto => producto.price >= 50 && producto.price <= 100);
+                break;
+            case "mayor100":
+                productosFiltrados = lista.filter(producto => producto.price > 100);
+                break;
+            default:
+                break; // No filtrar
+        }
 
+        // Mostrar los productos filtrados
+        mostrarProductosFiltrados(productosFiltrados);
+    });
+}
 
-
-function tarjetaProductosTotal() {
+function tarjetaProductos(categoria) {
     const contenedorProductos = document.getElementById("listaProductos");
     contenedorProductos.innerHTML = "";
-    bolsa.forEach(producto => {
+
+    // Determina la lista correspondiente a la categoría
+    let listaCategoria = [];
+    switch (categoria) {
+        case "men's clothing":
+            listaCategoria = bolsaHombre;
+            break;
+        case "women's clothing":
+            listaCategoria = bolsaMujer;
+            break;
+        case "jewelery":
+            listaCategoria = bolsaJoy;
+            break;
+        case "electronics":
+            listaCategoria = bolsaElec;
+            break;
+        default:
+            listaCategoria = [];
+            break;
+    }
+
+    if (listaCategoria.length === 0) {
+        contenedorProductos.innerHTML = "<p>No hay productos disponibles en esta categoría.</p>";
+        return;
+    }
+
+    // Mostrar todos los productos de la categoría antes de aplicar el filtro de precio
+    mostrarProductosFiltrados(listaCategoria);
+}
+
+function mostrarProductosFiltrados(lista) {
+    const contenedorProductos = document.getElementById("listaProductos");
+    contenedorProductos.innerHTML = "";
+    
+    if (lista.length === 0) {
+        contenedorProductos.innerHTML = "<p>No hay productos disponibles en esta categoría o con estos filtros de precio.</p>";
+        return;
+    }
+
+    lista.forEach(producto => {
         let tarjetita = document.createElement("div");
         tarjetita.classList.add("contenedor-tarjeta");
         tarjetita.innerHTML = `
             <h2 class="titulo-tarjeta">${producto.title}</h2>
             <img class="imagen-tarjeta" src=${producto.image}>
             <p class="parrafo-tarjeta" id="precio">$${producto.price}</p>
-            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
-            `
-        contenedorProductos.appendChild(tarjetita);
-    }
-    )
-}
-
-
-
-function mostrarProductosFiltrados(lista) {
-    const contenedorProductos = document.getElementById("listaProductos");
-    contenedorProductos.innerHTML = "";
-    lista.forEach(producto => {
-        let tarjetita = document.createElement("div");
-        tarjetita.classList.add("contenedor-tarjeta");
-        tarjetita.innerHTML = `
-        <h2 class="titulo-tarjeta">${producto.title}</h2>
-        <img class="imagen-tarjeta" src=${producto.image}>
-        <p class="parrafo-tarjeta" id="precio">$${producto.price}</p>
-        <button class="boton-tarjeta" type="button" data-id=${producto.id}>Añadir al carrito</button>
-    `;
+            <button class="boton-tarjeta" type="button" data-id=${producto.id}>Añadir al carrito</button>
+        `;
         contenedorProductos.appendChild(tarjetita);
     });
-}
-
-const inputBusqueda = document.getElementById('buscador');
-
-inputBusqueda.addEventListener('input', () => {
-    const texto = inputBusqueda.value.toLowerCase().trim();
-
-    if (texto === "") {
-        tarjetaProductosTotal();
-        return;
-    }
-
-    const productosFiltrados = bolsa.filter(producto =>
-        producto.title.toLowerCase().includes(texto)
-    );
-
-    mostrarProductosFiltrados(productosFiltrados);
-})
-
-
-function tarjetaProductos(categoria) {
-    const contenedorProductos = document.getElementById("listaProductos");
-    contenedorProductos.innerHTML = "";
-    bolsa.forEach(producto => {
-        if (producto.category == categoria) {
-            let tarjetita = document.createElement("div");
-            tarjetita.classList.add("contenedor-tarjeta");
-            tarjetita.innerHTML = `
-            <h2 class="titulo-tarjeta">${producto.title}</h2>
-            <img class="imagen-tarjeta" src=${producto.image}>
-            <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
-            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
-            `
-            contenedorProductos.appendChild(tarjetita);
-        }
-    })
 }
 
 const categoriaContenedor = document.getElementsByClassName("stones-container")[0];
 categoriaContenedor.addEventListener("click", (event) => {
     const clickeado = event.target.id;
+    
+    // Filtrar por categoría primero
     switch (clickeado) {
         case "men's clothing":
             tarjetaProductos(clickeado);
+            divisionCategoria(bolsaHombre);
             break;
         case "women's clothing":
             tarjetaProductos(clickeado);
+            divisionCategoria(bolsaMujer);
             break;
         case "jewelery":
             tarjetaProductos(clickeado);
+            divisionCategoria(bolsaJoy);
             break;
         case "electronics":
             tarjetaProductos(clickeado);
+            divisionCategoria(bolsaElec);
             break;
-
         default:
             break;
     }
-})
+});
 
 
 const verHistorial = document.getElementById('verHistorial');
