@@ -282,7 +282,8 @@ function tarjetaProductosTotal() {
             <h2 class="titulo-tarjeta">${producto.title}</h2>
             <img class="imagen-tarjeta" src=${producto.image}>
             <p class="parrafo-tarjeta" id="precio">$${producto.price}</p>
-            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
+            <div class="contenedor-botones"><button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
+            <button class="boton-favoritos" type="button" data-id= ${producto.id} ="">⭐</button></div>
             `
         contenedorProductos.appendChild(tarjetita);
     }
@@ -301,7 +302,8 @@ function mostrarProductosFiltrados(lista) {
         <h2 class="titulo-tarjeta">${producto.title}</h2>
         <img class="imagen-tarjeta" src=${producto.image}>
         <p class="parrafo-tarjeta" id="precio">$${producto.price}</p>
-        <button class="boton-tarjeta" type="button" data-id=${producto.id}>Añadir al carrito</button>
+        <div class="contenedor-botones"><button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
+            <button class="boton-favoritos" type="button" data-id= ${producto.id} ="">⭐</button></div>
     `;
         contenedorProductos.appendChild(tarjetita);
     });
@@ -336,7 +338,8 @@ function tarjetaProductos(categoria) {
             <h2 class="titulo-tarjeta">${producto.title}</h2>
             <img class="imagen-tarjeta" src=${producto.image}>
             <p class="parrafo-tarjeta" id="precio">${producto.price}</p>
-            <button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
+            <div class="contenedor-botones"><button class="boton-tarjeta" type="button" data-id= ${producto.id} ="">Añadir al carrito</button>
+            <button class="boton-favoritos" type="button" data-id= ${producto.id} ="">⭐</button></div>
             `
             contenedorProductos.appendChild(tarjetita);
         }
@@ -411,11 +414,11 @@ borrarHistorial.addEventListener('click', () => {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.getElementById('menuToggle');
-  const navbarList = document.getElementById('navbarList');
+    const menuToggle = document.getElementById('menuToggle');
+    const navbarList = document.getElementById('navbarList');
 
-  menuToggle.addEventListener('click', () => {
-    navbarList.classList.toggle('active');
-  });
+    menuToggle.addEventListener('click', () => {
+        navbarList.classList.toggle('active');
+    });
 });
 

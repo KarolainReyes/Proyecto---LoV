@@ -292,9 +292,9 @@ html::-webkit-scrollbar { width: 0px; }
 
 .boton-tarjeta {
   display: block;
-  width: calc(100% - 32px);
-  margin: 16px;
-  padding: 12px 0;
+  width: 50%;
+  margin: 2vh;
+  padding: 1vh;
   background-color: var(--rose);
   color: var(--white);
   font-size: 1rem;
@@ -307,6 +307,37 @@ html::-webkit-scrollbar { width: 0px; }
 
 .boton-tarjeta:hover {
   background-color: var(--red-violet);
+}
+
+/* ============================
+   ⭐ FAVORITOS
+============================ */
+
+.boton-favoritos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15%;
+  margin: 2vh;
+  padding: 1vh;
+  background-color: var(--rose);
+  color: var(--white);
+  font-size: 1.5rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2 ease;
+
+}
+
+.boton-favoritos:hover {
+  background-color: var(--red-violet);
+}
+
+.contenedor-botones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ============================
